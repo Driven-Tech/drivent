@@ -22,6 +22,7 @@ import { InputWrapper } from './InputWrapper';
 import { ErrorMsg } from './ErrorMsg';
 import { ufList } from './ufList';
 import FormValidations from './FormValidations';
+import { useSubscription } from '../../contexts/SubscriptionContext';
 
 dayjs.extend(CustomParseFormat);
 
@@ -29,7 +30,9 @@ export default function PersonalInformationForm() {
   const [dynamicInputIsLoading, setDynamicInputIsLoading] = useState(false);
   const { getCep } = useCep();
   const { enrollment } = useEnrollment();
+  console.log(enrollment);
   const { saveEnrollmentLoading, saveEnrollment } = useSaveEnrollment();
+  const { setHasNewData } = useSubscription();
 
   const {
     handleSubmit,
@@ -61,6 +64,7 @@ export default function PersonalInformationForm() {
       try {
         await saveEnrollment(newData);
         toast('Informações salvas com sucesso!');
+        setHasNewData(true);
       } catch (err) {
         toast('Não foi possível salvar suas informações!');
       }

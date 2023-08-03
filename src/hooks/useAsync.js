@@ -15,6 +15,7 @@ export default function useAsync(handler, immediate = true) {
       setLoading(false);
       return data;
     } catch (err) {
+      console.log(err);
       setError(error);
       setLoading(false);
       throw err;
@@ -33,6 +34,6 @@ export default function useAsync(handler, immediate = true) {
     data,
     loading,
     error,
-    act
+    act,
   };
 }
