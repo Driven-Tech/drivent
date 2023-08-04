@@ -30,7 +30,6 @@ export default function PersonalInformationForm() {
   const [dynamicInputIsLoading, setDynamicInputIsLoading] = useState(false);
   const { getCep } = useCep();
   const { enrollment } = useEnrollment();
-  console.log(enrollment);
   const { saveEnrollmentLoading, saveEnrollment } = useSaveEnrollment();
   const { setHasNewData } = useSubscription();
 
